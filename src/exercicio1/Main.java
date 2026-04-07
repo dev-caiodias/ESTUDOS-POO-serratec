@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
-        double saldo = 10000;
+
+        double saldo = 0;
         int escolha;
         double valorDepositado;
         double valorSaque;
@@ -13,7 +15,7 @@ public class Main {
         int quantidadeSaque = 0;
 
         do{
-            System.out.println("\n\n====SISTEMA DE CAIXA ELETRÔNICO====");
+            System.out.println("\n====SISTEMA DE CAIXA ELETRÔNICO====");
             System.out.println("""
                     [1] VER SALDO
                     [2] DEPOSITAR
@@ -52,6 +54,11 @@ public class Main {
                             System.out.println("Operação bloqueada por segurança. Digite um valor menor do que 1000.");
                             valorSaque = scanner.nextDouble();
                             scanner.nextLine();
+                        }
+
+                        if(valorSaque > saldo){
+                            System.out.println("Saldo insuficiente!");
+                            break;
                         }
 
                         saldo-=valorSaque;
