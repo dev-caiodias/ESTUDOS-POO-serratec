@@ -16,9 +16,21 @@ public class contaBancaria {
         this.saldo = 50;
     }
 
+    public int getNumeroConta() {
+        return numeroConta;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
     //MÉTODOS DE FUNCIONALIDADES
     public void verSaldo(){
-        System.out.printf("SALDO ATUAL: %.2f", saldo);
+        System.out.printf("SALDO ATUAL: %.2f", getSaldo());
     }
 
     public void depositar(double valor){
@@ -39,7 +51,6 @@ public class contaBancaria {
             System.out.println("Saldo insuficiente!");
             return;
         }
-
         saldo-=valor;
         quantidadeSaque++;
     }

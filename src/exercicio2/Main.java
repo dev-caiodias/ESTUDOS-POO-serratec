@@ -18,8 +18,8 @@ public class Main {
         int escolha;
 
         do{
-            System.out.println("CONTA"+ numeroDigitado +" CRIADA\n");
-            System.out.printf("Olá, %s !\n", nome);
+            System.out.println("CONTA"+ conta.getNumeroConta() +" CRIADA\n");
+            System.out.printf("Olá, %s !\n", conta.getTitular());
             System.out.println("====SISTEMA DE CAIXA ELETRÔNICO====\n");
             System.out.println("""
                     O que deseja fazer?
