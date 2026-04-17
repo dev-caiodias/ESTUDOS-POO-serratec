@@ -38,17 +38,17 @@ public class Pedido {
         double valorTotal = calcularTotal();
         double frete = calcularFrete(valorTotal);
 
-        StringBuilder sb = new StringBuilder("===RECIBO===\n\n");
+        StringBuilder sb = new StringBuilder("===RECIBO===\n");
         sb.append("--> DADOS DO CLIENTE <--\n");
         sb.append("Nome: ").append(cliente.getNome()).append("\n");
-        sb.append("CPF: ").append(cliente.getCpf()).append("\n");
+        sb.append("CPF: ").append(cliente.getCpf()).append("\n\n");
 
         sb.append("-->ENTREGA<--\n");
         sb.append("Endereço: ").append(cliente.getEndereco().rua()).append("\n")
-                .append(" Bairro").append(cliente.getEndereco().bairro()).append("\n");
-        sb.append("Cidade: ").append(cliente.getEndereco().cidade()).append("\n");
+                .append("Bairro: ").append(cliente.getEndereco().bairro()).append("\n");
+        sb.append("Cidade: ").append(cliente.getEndereco().cidade()).append("\n\n");
 
-        sb.append("Itens: \n");
+        sb.append("--> ITENS <-- \n");
         for (ItemPedido item : itens){
             sb.append(item.getNomeProduto())
                     .append(" - ")
@@ -63,7 +63,7 @@ public class Pedido {
         sb.append("\n");
 
         sb.append("TOTAL: R$ ").append(valorTotal).append("\n");
-        sb.append("Frete: R$" ).append(frete);
+        sb.append("Frete: R$" ).append(frete).append("\n");
         sb.append("Total final: ").append(valorTotal + frete).append("\n");
 
         System.out.println(sb.toString());
