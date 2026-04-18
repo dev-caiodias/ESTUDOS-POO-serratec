@@ -1,6 +1,7 @@
 package exercicio4;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public non-sealed class Caminhao extends Veiculo {
@@ -38,14 +39,29 @@ public non-sealed class Caminhao extends Veiculo {
     }
 
     @Override
-    public void calcularIpva() { // criar toString para os dois
+    public double calcularIpva() { // criar toString para os dois
         double ipva;
         long verificacao = ChronoUnit.YEARS.between(anoFabricacao, LocalDate.now());
         if (verificacao > 20){
-            ipva = 0;
+           return ipva = 0;
         }else {
-            ipva = precoFipe * 0.015;
+            return ipva = precoFipe * 0.015;
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("==== CAMINHÃO ====\n\n");
+        sb.append("Placa: ").append(placa).append("\n");
+        sb.append("Marca: ").append(marca).append("\n");
+        sb.append("Ano Fabricação: ").append(anoFabricacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))).append("\n");
+        sb.append("Capacidade: ").append(capacidadeCargaToneladas).append("\n");
+        sb.append("\n--- Valores ---\n");
+        sb.append("Diária: R$ ").append(String.format("%.2f ", valorLocacaoDiaria)).append("\n");
+        sb.append("Preço Fipe: R$ ").append(String.format("%.2f", precoFipe)).append("\n");
+        sb.append("IPVA: R$ ").append(String.format("%.2f", calcularIpva())).append("\n");
+        sb.append("\n================================\n");
+        return sb.toString();
+    }
 }

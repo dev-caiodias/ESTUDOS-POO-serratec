@@ -1,10 +1,13 @@
 package exercicio4;
 
+import java.time.LocalDate;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
         try {
-            Caminhao caminhao = new Caminhao("EQC-9988", "MERCEDEZ", 2023, 1000, 0, 5000);
 
         }catch(VeiculoInvalidoException e){
             System.out.println("ERRO: " + e.getMessage());

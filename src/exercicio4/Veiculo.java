@@ -50,4 +50,6 @@ public abstract sealed class Veiculo implements  Fretavel, Tributavel permits Ca
     public void setPrecoFipe(double precoFipe) {
         this.precoFipe = precoFipe;
     }
+
+    public abstract void alugarVeiculo(LocalDate dataInicio, LocalDate dataFim);
 }
