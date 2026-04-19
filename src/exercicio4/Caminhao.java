@@ -1,10 +1,13 @@
 package exercicio4;
 
+import exercicio4.Exceptions.VeiculoInvalidoException;
+import exercicio4.Interfaces.FretavelComCarga;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public non-sealed class Caminhao extends Veiculo {
+public non-sealed class Caminhao extends Veiculo implements FretavelComCarga {
     protected double capacidadeCargaToneladas;
 
     public Caminhao(String placa, String marca, LocalDate anoFabricacao, double valorLocacaoDiaria, double precoFipe, double capacidadeCargaToneladas) {
@@ -35,7 +38,7 @@ public non-sealed class Caminhao extends Veiculo {
         double valorDiaria = calculaCarga(pesoCarga);
         double valorTotal = valorDiaria * dias;
 
-        System.out.println("O valor total: " + valorTotal);
+        GeradorArquivo.gerarRecibo(this, dataInicio, dataFim, valorTotal);
     }
 
     @Override
@@ -63,5 +66,10 @@ public non-sealed class Caminhao extends Veiculo {
         sb.append("IPVA: R$ ").append(String.format("%.2f", calcularIpva())).append("\n");
         sb.append("\n================================\n");
         return sb.toString();
+    }
+
+    @Override
+    public void alugarVeiculo(LocalDate dataInicio, LocalDate dataFim) {
+
     }
 }

@@ -1,8 +1,11 @@
 package exercicio4;
 
+import exercicio4.Exceptions.VeiculoInvalidoException;
+import exercicio4.Interfaces.Tributavel;
+
 import java.time.LocalDate;
 
-public abstract sealed class Veiculo implements  Fretavel, Tributavel permits Caminhao, CarroPasseio{
+public abstract sealed class Veiculo implements Tributavel permits Caminhao, CarroPasseio{
     protected final String placa;
     protected final String marca;
     protected final LocalDate anoFabricacao;
@@ -49,7 +52,7 @@ public abstract sealed class Veiculo implements  Fretavel, Tributavel permits Ca
 
     public void setPrecoFipe(double precoFipe) {
         this.precoFipe = precoFipe;
-    }
+    };
 
-    public abstract void alugarVeiculo(LocalDate dataInicio, LocalDate dataFim);
+
 }

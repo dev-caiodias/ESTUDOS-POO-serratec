@@ -1,10 +1,13 @@
 package exercicio4;
 
+import exercicio4.Exceptions.VeiculoInvalidoException;
+import exercicio4.Interfaces.Fretavel;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public non-sealed class CarroPasseio extends Veiculo {
+public non-sealed class CarroPasseio extends Veiculo implements Fretavel {
 
     public CarroPasseio(String placa, String marca, LocalDate anoFabricacao, double valorLocacaoDiaria, double precoFipe) {
         super(placa, marca, anoFabricacao, valorLocacaoDiaria, precoFipe);
@@ -23,7 +26,6 @@ public non-sealed class CarroPasseio extends Veiculo {
 
     @Override
     public void alugarVeiculo(LocalDate dataInicio, LocalDate dataFim) {
-
         if (dataInicio == null || dataFim == null) {
             throw new VeiculoInvalidoException("Dias inválidos.");
         }
@@ -34,9 +36,8 @@ public non-sealed class CarroPasseio extends Veiculo {
         long dias = ChronoUnit.DAYS.between(dataInicio, dataFim);
         double valorTotal = valorLocacaoDiaria * dias;
 
-        System.out.println("O valor total: " + valorTotal);
+        GeradorArquivo.gerarRecibo(this, dataInicio, dataFim,valorTotal);
     }
-
 
     @Override
     public String toString() {

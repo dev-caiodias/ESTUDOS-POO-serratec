@@ -1,0 +1,15 @@
+==== CAMINHÃO ====
+
+Placa: EQC-9988
+Marca: Mercedes
+Ano Fabricação: 01/01/2020
+Capacidade: 5.0
+
+--- Valores ---
+Diária: R$ 1000,00 
+Preço Fipe: R$ 150000,00
+IPVA: R$ 2250,00
+
+================================
+Periodo: 2026-04-20--2026-04-25
+Valor total: R$5000,00
