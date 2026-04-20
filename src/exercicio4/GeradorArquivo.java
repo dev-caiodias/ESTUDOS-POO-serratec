@@ -11,7 +11,7 @@ public class GeradorArquivo {
 
         try(FileWriter fw = new FileWriter(nomeArquivo)){
             fw.write(veiculo.toString());
-            fw.write("Periodo: " + dataInicio + "--" + dataFim + "\n");
+            fw.write("Periodo: " + dataInicio + " ATÉ " + dataFim + "\n");
             fw.write("Valor total: R$" + String.format("%.2f", valorTotal) + "\n");
             System.out.println("Arquivo gerado com suceeso! Arquivo: " + nomeArquivo + ".txt");
         } catch (IOException e) {

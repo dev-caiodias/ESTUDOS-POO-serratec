@@ -42,7 +42,7 @@ public non-sealed class CarroPasseio extends Veiculo implements Fretavel {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("==== CAMINHÃO ====\n\n");
+        sb.append("==== CARRO ====\n\n");
         sb.append("Placa: ").append(placa).append("\n");
         sb.append("Marca: ").append(marca).append("\n");
         sb.append("Ano Fabricação: ").append(anoFabricacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))).append("\n");
