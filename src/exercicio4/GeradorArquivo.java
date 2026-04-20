@@ -6,13 +6,16 @@ import java.time.LocalDate;
 
 public class GeradorArquivo {
 
-    public static void gerarRecibo(Veiculo veiculo, LocalDate dataInicio, LocalDate dataFim, double valorTotal){
+    public static void gerarRecibo(Veiculo veiculo, LocalDate dataInicio, LocalDate dataFim, double valorTotal, boolean sobrecarga){
         String nomeArquivo = "recibo" + veiculo.getPlaca() + ".txt";
 
         try(FileWriter fw = new FileWriter(nomeArquivo)){
             fw.write(veiculo.toString());
             fw.write("Periodo: " + dataInicio + " ATÉ " + dataFim + "\n");
             fw.write("Valor total: R$" + String.format("%.2f", valorTotal) + "\n");
+            if(sobrecarga){
+                fw.write("Houve um acréscimo de 10% na diaria!");
+            }
             System.out.println("Arquivo gerado com suceeso! Arquivo: " + nomeArquivo + ".txt");
         } catch (IOException e) {
             System.out.println("ERRO: houve um erro ao gerar o recibo." + e.getMessage());

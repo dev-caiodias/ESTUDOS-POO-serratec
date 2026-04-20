@@ -36,7 +36,7 @@ public non-sealed class CarroPasseio extends Veiculo implements Fretavel {
         long dias = ChronoUnit.DAYS.between(dataInicio, dataFim);
         double valorTotal = valorLocacaoDiaria * dias;
 
-        GeradorArquivo.gerarRecibo(this, dataInicio, dataFim,valorTotal);
+        GeradorArquivo.gerarRecibo(this, dataInicio, dataFim, valorTotal, false);
     }
 
     @Override

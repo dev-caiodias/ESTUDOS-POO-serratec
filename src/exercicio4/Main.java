@@ -3,6 +3,7 @@ package exercicio4;
 import exercicio4.Exceptions.VeiculoInvalidoException;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Main {
@@ -88,16 +89,24 @@ public class Main {
         Veiculo escolhido = frota.getVeiculos().get(escolha);
 
         try{
+            System.out.println("Data início: ");
+            LocalDate dataInicio = LocalDate.parse(sc.next());
+            System.out.println("Data retorno: ");
+            LocalDate dataFim = LocalDate.parse(sc.next());
+
             if(escolhido instanceof Caminhao caminhaoEscolhido){
-                caminhaoEscolhido.alugarVeiculo(4.0, LocalDate.of(2026, 4, 20), LocalDate.of(2026, 4, 25));
+                System.out.println("Peso da carga: ");
+                double peso = sc.nextDouble();
+                caminhaoEscolhido.alugarVeiculo(peso, dataInicio, dataFim);
             }else if(escolhido instanceof CarroPasseio carroEscolhido){
-                carroEscolhido.alugarVeiculo(LocalDate.of(2026, 4, 20), LocalDate.of(2026, 4, 23));
+                carroEscolhido.alugarVeiculo(dataInicio, dataFim);
             }
-        }catch(VeiculoInvalidoException e){
-            System.out.println("ERRO: " + e.getMessage());
+        }catch(DateTimeParseException e){
+            System.out.println("ERRO: Data inválida.");
+        }catch(VeiculoInvalidoException e) {
+            System.out.println("Erro: " + e.getMessage());
         }
 
         sc.close();
-
     }
 }

@@ -34,15 +34,17 @@ public non-sealed class Caminhao extends Veiculo implements FretavelComCarga {
         if(dataInicio == null || dataFim == null){throw new VeiculoInvalidoException("Dias inválidos.");}
         if(dataFim.isBefore(dataInicio)){throw new VeiculoInvalidoException("A data final não pode anteceder a data inicial");}
 
+        boolean sobrecarga = pesoCarga > capacidadeCargaToneladas;
+
         long dias = ChronoUnit.DAYS.between(dataInicio, dataFim);
         double valorDiaria = calculaCarga(pesoCarga);
         double valorTotal = valorDiaria * dias;
 
-        GeradorArquivo.gerarRecibo(this, dataInicio, dataFim, valorTotal);
+        GeradorArquivo.gerarRecibo(this, dataInicio, dataFim, valorTotal, sobrecarga);
     }
 
     @Override
-    public double calcularIpva() { // criar toString para os dois
+    public double calcularIpva() {
         double ipva;
         long verificacao = ChronoUnit.YEARS.between(anoFabricacao, LocalDate.now());
         if (verificacao > 20){
